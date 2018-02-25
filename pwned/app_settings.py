@@ -6,7 +6,7 @@ DEFAULTS = {
     'TIMEOUT': 1, # The default is conservative, it should be <20ms typically, 500ms if uncached
     'PREFIX_LENGTH': 5,
     'OCCURRENCE_THRESHOLD': 1, # How many occurrences is too many
-    'USER-AGENT': 'django-pwned',
+    'USER-AGENT': 'github.com/craigloftus/django-pwned-validator',
 }
 
 
