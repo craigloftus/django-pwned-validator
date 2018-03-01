@@ -12,7 +12,7 @@ class PwnedValidator:
     code = 'invalid'
     client = PwnedClient
 
-    def __call__(self, password):
+    def validate(self, password, user=None):
         pwned_client = self.client()
         count = pwned_client.count_occurrences(password)
         if count >= app_settings.PWNED['OCCURRENCE_THRESHOLD']:
