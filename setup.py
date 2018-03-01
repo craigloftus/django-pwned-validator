@@ -11,6 +11,7 @@ setup(
     include_package_data=True,
     license='MIT License',
     description='A Pwned Passwords validator for Django',
+    long_description=open('README.rst').read(),
     url='https://github.com/craigloftus/django-pwned-validator',
     author='Craig Loftus',
     author_email='craigloftus@gmail.com',
