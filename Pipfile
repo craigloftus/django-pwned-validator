@@ -13,10 +13,10 @@ pytest = "*"
 pytest-django = "*"
 pytest-cov = "*"
 pytest-vcr = "*"
-tox = "*"
 
 
 [packages]
+
 
 
 [requires]
