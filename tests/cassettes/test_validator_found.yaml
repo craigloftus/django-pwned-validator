@@ -5,6 +5,7 @@ interactions:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
+      Cookie: [__cfduid=dac9a0a123d9be7f51f7319b06df156091519921272]
       User-Agent: [github.com/craigloftus/django-pwned-validator]
     method: GET
     uri: https://api.pwnedpasswords.com/range/5BAA6
@@ -254,17 +255,15 @@ interactions:
     headers:
       Arr-Disable-Session-Affinity: ['True']
       CF-Cache-Status: [HIT]
-      CF-RAY: [3f4cf48f08be3506-LHR]
+      CF-RAY: [3f4cf8b7ccc66a67-LHR]
       Cache-Control: ['public, max-age=2678400']
       Connection: [keep-alive]
       Content-Encoding: [gzip]
       Content-Type: [text/plain; charset=utf-8]
-      Date: ['Thu, 01 Mar 2018 16:21:12 GMT']
+      Date: ['Thu, 01 Mar 2018 16:24:02 GMT']
       Expect-CT: ['max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"']
-      Expires: ['Sun, 01 Apr 2018 16:21:12 GMT']
+      Expires: ['Sun, 01 Apr 2018 16:24:02 GMT']
       Server: [cloudflare]
-      Set-Cookie: ['__cfduid=dac9a0a123d9be7f51f7319b06df156091519921272; expires=Fri,
-          01-Mar-19 16:21:12 GMT; path=/; domain=.pwnedpasswords.com; HttpOnly; Secure']
       Strict-Transport-Security: [max-age=31536000; includeSubDomains; preload]
       Vary: [Accept-Encoding]
       X-Content-Type-Options: [nosniff]
