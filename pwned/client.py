@@ -1,7 +1,11 @@
 from hashlib import sha1
+import logging
 import requests
 
 from . import app_settings
+
+
+logger = logging.getLogger(__name__)
 
 
 session = requests.Session()
@@ -11,10 +15,13 @@ session.headers.update({'User-Agent': app_settings.PWNED['USER-AGENT']})
 class PwnedClient:
 
     def fetch_range(self, prefix):
-        # TODO Check for and log errors
-        url = ''.join([app_settings.PWNED['ENDPOINT'], prefix])
-        resp = session.get(url, timeout=app_settings.PWNED['TIMEOUT'])
-        return resp.text
+        try:
+            url = ''.join([app_settings.PWNED['ENDPOINT'], prefix])
+            resp = session.get(url, timeout=app_settings.PWNED['TIMEOUT'])
+            return resp.text
+        except requests.exceptions.RequestException as e:
+            logger.exception("Request to Pwned Password API failed. Validation skipped.")
+            return ""
 
     def parse_range(self, raw_range):
         """
