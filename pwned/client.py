@@ -2,22 +2,22 @@ from hashlib import sha1
 import logging
 import requests
 
-from . import app_settings
+from .settings import get_config
 
 
 logger = logging.getLogger(__name__)
 
 
 session = requests.Session()
-session.headers.update({'User-Agent': app_settings.PWNED['USER-AGENT']})
+session.headers.update({'User-Agent': get_config()['USER_AGENT']})
 
 
 class PwnedClient:
 
     def fetch_range(self, prefix):
         try:
-            url = ''.join([app_settings.PWNED['ENDPOINT'], prefix])
-            resp = session.get(url, timeout=app_settings.PWNED['TIMEOUT'])
+            url = ''.join([get_config()['ENDPOINT'], prefix])
+            resp = session.get(url, timeout=get_config()['TIMEOUT'])
             return resp.text
         except requests.exceptions.RequestException as e:
             logger.exception("Request to Pwned Password API failed. Validation skipped.")
@@ -45,7 +45,7 @@ class PwnedClient:
         return sha1(password.encode()).hexdigest().upper()
 
     def split_hash(self, hashed_password):
-        length = app_settings.PWNED['PREFIX_LENGTH']
+        length = get_config()['PREFIX_LENGTH']
         return hashed_password[:length], hashed_password[length:]
 
     def count_occurrences(self, password):

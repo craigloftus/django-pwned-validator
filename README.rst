@@ -20,7 +20,7 @@ Modify your `settings.py` to install the app and enable the validator:
 .. code-block:: python
 
     INSTALLED_APPS = [
-        'pwned',
+        'pwned.apps.PwnedConfig',
         ...
     ]
 

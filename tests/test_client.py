@@ -2,6 +2,9 @@ import pytest
 
 from pwned.client import PwnedClient
 
+from .fixtures import bypass_config_cache
+
+
 def test_parse_range_valid():
     client = PwnedClient()
     raw_range = """
@@ -40,12 +43,13 @@ def test_split_hash():
     assert client.split_hash(hashed_password) == ('8CEF1', 'E00B20F463C1E48B589B03660D4E3B9EF7A')
 
 
-def test_split_hash_prefix_length(monkeypatch):
-    monkeypatch.setattr('pwned.app_settings.PWNED', {'PREFIX_LENGTH': 10})
+def test_split_hash_prefix_length(settings, bypass_config_cache):
+    settings.PWNED = {'PREFIX_LENGTH': 10}
     client = PwnedClient()
     hashed_password = '8CEF1E00B20F463C1E48B589B03660D4E3B9EF7A'
     prefix, suffix = client.split_hash(hashed_password)
     assert len(prefix) == 10
+    assert len(suffix) == 30
 
 
 @pytest.mark.vcr
