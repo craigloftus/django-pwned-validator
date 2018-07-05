@@ -1,16 +1,31 @@
-import pytest
+import logging
 
 from django.core.exceptions import ValidationError
+import pytest
 from requests.exceptions import Timeout
 
 from pwned.validators import PwnedValidator
 
+from .fixtures import bypass_config_cache
+
 
 @pytest.mark.vcr
-def test_validator_found():
+def test_validator_found(caplog):
+    caplog.set_level(logging.INFO)
     validator = PwnedValidator()
     with pytest.raises(ValidationError):
         validator.validate('password')
+    assert 'Password blocked' in caplog.text
+
+
+@pytest.mark.vcr
+def test_validator_found_logonly(caplog, settings, bypass_config_cache):
+    settings.PWNED = {
+        'LOG_ONLY': True,
+    }
+    validator = PwnedValidator()
+    validator.validate('password')
+    assert 'Password used' in caplog.text
 
 
 @pytest.mark.vcr

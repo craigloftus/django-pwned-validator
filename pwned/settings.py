@@ -9,6 +9,7 @@ DEFAULTS = {
     'PREFIX_LENGTH': 5,
     'OCCURRENCE_THRESHOLD': 1, # How many occurrences is too many
     'USER_AGENT': 'github.com/craigloftus/django-pwned-validator',
+    'LOG_ONLY': False, # Don't raise a validation error, just log the failure
 }
 
 
