@@ -5,9 +5,10 @@ from django.conf import settings
 
 DEFAULTS = {
     'ENDPOINT': 'https://api.pwnedpasswords.com/range/',
-    'TIMEOUT': 2, # The default is conservative but will cut off some requests; average is 280ms
+    'OCCURRENCE_NOTIFY_THRESHOLD': 1, # How many occurrences cause a email or validation error
     'PREFIX_LENGTH': 5,
-    'OCCURRENCE_THRESHOLD': 1, # How many occurrences is too many
+    'RECORD_HITS': True,
+    'TIMEOUT': 2, # The default is conservative but will cut off some requests; typical is 200ms
     'USER_AGENT': 'github.com/craigloftus/django-pwned-validator',
 }
 

@@ -20,7 +20,7 @@ setup(
         'requests',
     ],
     extras_require={
-        'test': ['django<2.1', 'pytest', 'pytest-cov', 'pytest-django', 'pytest-vcr',],
+        'test': ['django<2.3', 'pytest', 'pytest-cov', 'pytest-django', 'pytest-vcr',],
     },
     classifiers=[
         'Environment :: Web Environment',
