@@ -34,4 +34,4 @@ Modify your `settings.py` to install the app and enable the validator:
 
 Compatibility
 ~~~~~~~~~~~~~
-Supports Django 1.11.x and 2.0 on Python 3.5 and 3.6.
+Supports Django 2.2 to 3.2 on Python 3.5 to 3.8.

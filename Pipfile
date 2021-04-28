@@ -8,7 +8,7 @@ name = "pypi"
 [dev-packages]
 
 "e1839a8" = {path = ".", editable = true}
-django = "<2.1"
+django = "<3.3"
 pytest = "*"
 pytest-django = "*"
 pytest-cov = "*"
@@ -22,4 +22,4 @@ readme-renderer = "*"
 
 [requires]
 
-python_version = "3.5"
+python_version = "3.8"

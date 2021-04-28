@@ -8,7 +8,7 @@ from .settings import get_config
 
 @deconstructible
 class PwnedValidator:
-    message = _('This password is known to be weak')
+    message = _('This password is in common use, please choose another')
     code = 'invalid'
     client = PwnedClient
 
