@@ -64,3 +64,12 @@ def test_count_occurrences_none():
     client = PwnedClient()
     count = client.count_occurrences('8CEF1E00B20F463C1E48B589B03660D4E3B9EF7A')
     assert count == 0
+
+
+@pytest.mark.vcr
+def test_padding():
+    client = PwnedClient()
+    raw = client.fetch_range('8CEF1')
+    parsed = client.parse_range(raw)
+    # Check for 0 count entries
+    assert any(count == 0 for suffix, count in parsed.items())

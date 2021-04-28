@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 session = requests.Session()
-session.headers.update({'User-Agent': get_config()['USER_AGENT']})
+session.headers.update({'User-Agent': get_config()['USER_AGENT'], 'Add-Padding': 'true'})
 
 
 class PwnedClient:
