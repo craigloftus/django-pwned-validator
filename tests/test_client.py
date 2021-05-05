@@ -1,4 +1,6 @@
 import pytest
+import requests
+import requests_mock as mrequests
 
 from pwned.client import PwnedClient
 
@@ -20,6 +22,11 @@ def test_parse_range_valid():
         '012A7CA357541F0AC487871FEEC1891C49C': 2,
     }
     assert client.parse_range(raw_range) == expected
+
+
+def test_parse_range_empty():
+    client = PwnedClient()
+    assert client.parse_range("") == {}
 
 
 def test_join_hash():
@@ -64,6 +71,13 @@ def test_count_occurrences_none():
     client = PwnedClient()
     count = client.count_occurrences('8CEF1E00B20F463C1E48B589B03660D4E3B9EF7A')
     assert count == 0
+
+
+def test_failed_fetch(caplog, requests_mock):
+    requests_mock.get(mrequests.ANY, exc=requests.exceptions.ConnectTimeout)
+    client = PwnedClient()
+    assert client.fetch_range('8CEF1') == ""
+    assert "Request to Pwned Password API failed. Validation skipped." in caplog.text
 
 
 @pytest.mark.vcr
