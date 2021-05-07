@@ -3,7 +3,7 @@ addopts = "--ds=tests.testproject.settings"
 
 [tool.poetry]
 name = "django-pwned-validator"
-version = "0.0.4"
+version = "0.0.5"
 description = "A PwnedPassword validator for Django"
 authors = ["Craig Loftus <craigloftus@gmail.com>"]
 license = "MIT License"
@@ -13,7 +13,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.6, <4"
+python = ">=3.6"
 requests = "^2.25.1"
 
 [tool.poetry.dev-dependencies]
