@@ -3,7 +3,7 @@ addopts = "--ds=tests.testproject.settings"
 
 [tool.poetry]
 name = "django-pwned-validator"
-version = "0.0.5"
+version = "0.0.6"
 description = "A PwnedPassword validator for Django"
 authors = ["Craig Loftus <craigloftus@gmail.com>"]
 license = "MIT License"

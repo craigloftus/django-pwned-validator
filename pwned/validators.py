@@ -8,7 +8,8 @@ from .settings import get_config
 
 @deconstructible
 class PwnedValidator:
-    message = _('This password is in common use, please choose another')
+    error = _('This password is in common use, please choose another')
+    help_text = _("Your password can't be in common use")
     code = 'invalid'
     client = PwnedClient
 
@@ -16,4 +17,7 @@ class PwnedValidator:
         pwned_client = self.client()
         count = pwned_client.count_occurrences(password)
         if count >= get_config()['OCCURRENCE_THRESHOLD']:
-            raise ValidationError(self.message, code=self.code)
+            raise ValidationError(self.error, code=self.code)
+
+    def get_help_text(self):
+        return self.help_text
